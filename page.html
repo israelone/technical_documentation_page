@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Ruby Technical Documentation Page</title>
+  <link rel="stylesheet" href="page.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+  <div id="container">
+    <nav id="navbar">
+      <header>Python Documentation</header>
+      <ul>
+        <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+        <li><a class="nav-link" href="#Installing_Ruby">Installing Ruby</a></li>
+        <li><a class="nav-link" href="#Hello_World">Hello World</a></li>
+        <li><a class="nav-link" href="#Comments">Comments</a></li>
+        <li><a class="nav-link" href="#Data_Types">Data Types</a></li>
+        <li><a class="nav-link" href="#Variables_and_Constants">Variables and Constants</a></li>
+        <li><a class="nav-link" href="#Conditionals_and_Loops">Conditionals and Loops</a></li>
+      </ul>
+    </nav>
+    <main id="main-doc">
+
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <p>
+          Ruby is an object-oriented scripting language originally developed
+          by Yukihiro Matsumoto (also known as Matz). The main website of the
+          Ruby programming language is ruby-lang.org. Development began in
+          February 1993 and the first alpha version of Ruby was released in
+          December 1994. It was developed as an alternative to scripting
+          languages like Perl and Python.[1] Ruby borrows heavily from Perl
+          and the class library is essentially an object-oriented
+          reorganization of Perl's functionality. Ruby also borrows from Lisp
+          and Smalltalk. While Ruby does not borrow many features from Python,
+          reading the code for Python helped Matz develop Ruby.[1] MacOS comes
+          with Ruby already installed. Most Linux distributions either come
+          with Ruby preinstalled or allow you to easily install Ruby from the
+          distribution's repository of free software. You can also download
+          and install Ruby on Windows. The more technically adept can download
+          the Ruby source code[2] and compile it for most operating systems,
+          including Unix, DOS, BeOS, OS/2, Windows, and Linux.[3]
+        </p>
+      </section>
+
+      <section class="main-section" id="Installing_Ruby">
+        <header>Installing Ruby</header>
+        <p>
+          The first step to get started in Ruby development is setting up your
+          local environment. Due to differences between various operating
+          systems we will cover multiple of them. If you are already able to
+          use a terminal emulator and know how to install Ruby yourself, you
+          can skip this chapter (after you installed Ruby). Otherwise we will
+          guide you through the process of installing Ruby on your computer.
+        </p>
+        <h3>Windows</h3>
+        <p>
+          Windows doesn't use the Bash shell and in the past it was hard to
+          get Bash to work on Windows. Users of Windows 10 Anniversary Update
+          build 14393 or later however now have the ability to install a
+          Ubuntu subsystem which will essentially provide them with a working
+          Bash shell and access to many commands found in the Ubuntu Linux
+          distribution. Users wishing to use Bash on Windows 10 are advised to
+          follow the official installation instructions from Microsoft. After
+          the installation you can basically follow the instructions for
+          Ubuntu/Debian. If you don't want to do that you have two options: Go
+          with another non-Microsoft project providing a Bash environment for
+          Windows. For example you can install Cygwin, a collection of free
+          software tools available for Windows. During the install, make sure
+          that you select the "ruby" package, located in the "Devel,
+          Interpreters" category. Use the Windows Powershell. You might
+          sometimes have to write something different than in this book, but
+          for basic examples this might still be enough and safe you the time
+          you would otherwise need for installation. However if you are
+          serious about learning a shell, learning Bash has the advantage that
+          it is not exclusive to Windows, unlike Powershell, which prevents
+          you from being locked in into a platform should you one day decide
+          to switch to Unix-like operating systems or use a non-Windows
+          server.
+        </p>
+        <h3>macOs</h3>
+        <p>
+          Ruby comes preinstalled on macOS. To check which version is
+          installed on your system, execute ruby -v inside a shell session.
+        </p>
+        <h3>Linux</h3>
+        <p>
+          On many Linux distributions Ruby is installed by default. To check
+          if Ruby is installed on your system, run ruby -v in a shell session.
+          Where this is not the case, or you want to update the installed
+          version, you should use your distribution's package manager. Here we
+          will provide information for some popular Linux distributions here,
+          however it is recommended to users of all distributions to
+          familiarize themselves with their distribution's package manager,
+          since this will allow for the most efficient software management.
+          Whether this is a command-line or graphical application depends on
+          the offerings of the distribution and personal preference of the
+          user.
+        </p>
+        <h5>Debian / Ubuntu</h5>
+        <p>
+          The package manager Synaptic provides graphical package management.
+          It is installed by default under Ubuntu and has to be installed
+          manually on Debian (by running
+          <code>sudo apt-get install synaptic</code> from the command line).
+          Instead of using Synaptic you can also use apt directly from the
+          command-line (you can find further information in the Debian Wiki's
+          article on Package Management). Execute
+          <code>sudo apt-get install ruby</code> from the command line to
+          install Ruby.
+        </p>
+      </section>
+
+      <section class="main-section" id="Hello_World">
+        <header>Hello World</header>
+        <p>
+          Create a text file called hello_world.rb containing the following
+          code:
+        </p>
+        <div><code> puts 'Hello world!</code></div>
+
+        <p>Now run it at the shell prompt.</p>
+        <div><code>$ ruby hello_world.rb Hello, world!</code></div>
+        <p>
+          You can also run the short "Hello, world!" program without creating
+          a text file at all. This is called a one-liner.
+        </p>
+        <div><code>$ ruby -e "puts 'Hello, world!'" Hello, world!</code></div>
+        <p>
+          Option -e means evaluate (Ruby code). You can run this code with
+          irb, but the output will look slightly different. puts will print
+          out "Hello, world!", but irb will also print out the return value of
+          puts — which is nil.
+        </p>
+
+        <div><code>$ irb >> puts "Hello, world!" Hello, world! => nil</code></div>
+      </section>
+
+
+      <section class="main-section" id="Comments">
+        <header>Comments</header>
+        <p>
+          Like Perl, Bash, Python, and C Shell, Ruby uses the hash symbol
+          (also called Pound Sign, number sign) for comments. Everything from
+          the hash to the end of the line is ignored when the program is run
+          by Ruby. For example, here's our hello_world.rb program with
+          comments.
+        </p>
+        <div><code># My first Ruby program # On my way to Ruby fame & fortune! puts
+            'Hello, world!'
+          </code></div>
+
+        <p>
+          You can append a comment to the end of a line of code, as well.
+          Everything before the hash is treated as normal Ruby code.
+        </p>
+        <div><code>puts 'Hello, world!' # Print out "Hello, world!" </code></div>
+        <p>You can also comment several lines at a time:</p>
+        <div> <code>
+            =begin This program will print "Hello, world!". =end puts 'Hello,
+            world!'
+          </code></div>
+
+        <p>
+          Although block comments can start on the same line as =begin, the
+          =end must have its own line. You cannot insert block comments in the
+          middle of a line of code as you can in C, C++, and Java, although
+          you can have non-comment code on the same line as the =end.
+        </p>
+        <div><code>
+            =begin This program will print 'Hello, world!' =end puts 'Hello,
+            world!'
+          </code></div>
+
+      </section>
+
+      <section class="main-section" id="Data_Types">
+        <header>Data Types</header>
+        <p>
+          Everything in Ruby is an object. Ruby has 8 primary data types and 3
+          more data types derived from the Numeric superclass. Everything has
+          a class. Don't believe me? Try running this bit of code:
+        </p>
+        <div>
+          <code>
+            h = {"hash?" => "yep, it\'s a hash!", "the answer to everything" =>
+            42, :linux => "fun for coders."}<br />
+            puts "Stringy string McString!".class<br />
+            puts 1.class puts 1.class.superclass<br />
+            puts 1.class.superclass.superclass<br />
+            puts 4.3.class <br />puts 4.3.class.superclass <br />puts nil.class
+            <br />puts h.class<br />
+            puts :symbol.class<br />
+            puts [].class <br />puts (1..8).class
+          </code>
+        </div>
+        <p>Displays</p>
+        <div>
+          <code>
+            String Fixnum<br />
+            Integer<br />
+            Numeric<br />
+            Float<br />
+            Numeric<br />
+            NilClass<br />
+            Hash<br />
+            Symbol<br />
+            Array<br />
+            Range<br />
+          </code>
+        </div>
+        <p>
+          See? Everything is an object. Every object has a method called class
+          that returns that object's class. You can call methods on pretty
+          much anything. Earlier you saw an example of this in the form of
+          3.times. (Technically when you call a method you're sending a
+          message to the object, but I'll leave the significance of that for
+          later.) Something that makes this extreme object oriented-ness very
+          fun for me is the fact that all classes are open, meaning you can
+          add variables and methods to a class at any time during the
+          execution of your code. This, however, is a discussion of datatypes.
+        </p>
+        <h3>Constants</h3>
+        <p>
+          We'll start off with constants because they're simple. Two things to
+          remember about constants: 1. Constants start with capital letters.
+          Constant is a constant. constant is not a constant. 2. You can
+          change the values of constants, but Ruby will give you a warning.
+          (Silly, I know... but what can you do?) Congrats. Now you're an
+          expert on Ruby constants.
+        </p>
+        <h3>Symbols</h3>
+        <p>
+          So did you notice something weird about that first code listing?
+          "What the heck was that colon thingy about?" Well, it just so
+          happens that Ruby's object oriented ways have a cost: lots of
+          objects make for slow code. Every time you type a string, Ruby makes
+          a new object. Regardless of whether two strings are identical, Ruby
+          treats every instance as a new object. You could have "live long and
+          prosper" in your code once and then again later on and Ruby wouldn't
+          even realize that they're pretty much the same thing. Here is a
+          sample irb session which demonstrates this fact:</p>
+        <p> irb> <code>"live long and
+              prosper".object_id</code> => -507772268 irb> "live long and
+          prosper".object_id => -507776538</p>
+        <p>Notice that the object ID returned
+          by irb Ruby is different even for the same two strings. To get
+          around this memory hoggishness, Ruby has provided "symbols." Symbols
+          are lightweight objects best used for comparisons and internal
+          logic. If the user doesn't ever see it, why not use a symbol rather
+          than a string? Your code will thank you for it. Let us try running
+          the above code using symbols instead of strings: </p>
+        <p>irb>
+          :my_symbol.object_id => 150808 irb> :my_symbol.object_id => 150808</p>
+        <p>
+          Symbols are denoted by the colon sitting out in front of them, like
+          so: <code>:symbol_name</code></p>
+        </p>
+        <h3>Hashes</h3>
+        <p>Hashes are like dictionaries, in a sense. You have a key, a reference, and you look it up to find the
+          associated object, the definition.
+          The best way to illustrate this, I think, is with a quick demonstration:
+        </p>
+        <div>
+          <code>hash = { :leia => "Princess from Alderaan", :han => "Rebel without a cause", :luke => "Farmboy turned Jedi"}<br/>
+                  puts hash[:leia]<br/>
+                  puts hash[:han]<br/>
+                  puts hash[:luke]
+            </code>
+        </div>
+        <p>display:</p>
+        <div>
+          <code>Princess from Alderaan<br/>
+  Rebel without a cause<br/>
+  Farmboy turned Jed
+</code>
+        </div>
+        <h3>Arrays</h3>
+        <p>Arrays are a lot like Hashes, except that the keys are always consecutive numbers, and always starts at 0. In
+          an Array with five items, the last element would be found at array[4] and the first element would be found at
+          array[0]. In addition, all the methods that you just learned with Hashes can also be applied to Arrays.</p>
+        <p>Here are two ways to create an <code>Array</code>:</p>
+        <div><code>array1 = ["hello", "this", "is", "an", "array!"]<br/>
+array2 = []<br/>
+array2 << "This"   # index 0<br/>
+array2 << "is"     # index 1<br/>
+array2 << "also"   # index 2<br/>
+array2 << "an"     # index 3<br/>
+array2 << "array!" # index 4<br/></code></div>
+        <h3>Strings</h3>
+        <p>I would recommend reading the chapters on strings and alternate quotes now if you haven't already. This
+          chapter is going to cover some pretty spiffy things with <code>Strings</code> and just assume that you already
+          know the information in these two chapters.
+          In Ruby, there are some pretty cool built-in functions where <code>Strings</code> are concerned. For example,
+          you can multiply them:</p>
+        <div>
+          <code>"Danger, Will Robinson!" * 5</code>
+        </div>
+        <p>yields</p>
+        <div>
+          <code>Danger, Will Robinson!Danger, Will Robinson!Danger, Will Robinson!Danger, Will Robinson!Danger, Will Robinson!</code>
+        </div>
+        <p><code>String</code>s may also be compared:</p>
+        <div>
+          <code>"a" < "b"</code>
+        </div>
+        <p>yields</p>
+        <div>
+          <code>true</code>
+        </div>
+
+      </section>
+      <section class="main-section" id="Variables_and_Constants">
+        <header>Variables and Constants</header>
+        <p>A variable in Ruby can be distinguished by the characters at the start of its name. There's no restriction to
+          the length of a variable's name (with the exception of the heap size).</p>
+        <h3>Summary</h3>
+        <p>The first character indicates the scope:
+        <ul>
+          <li>Local variables - lowercase letter or underscore</li>
+          <li>Instance variables - @<ul>
+              <li>In class scope, instance variables belong to the object that is the class</li>
+              <li>To define instance variables on the objects that belong to the class, use @ inside initialize()></li>
+            </ul>
+          </li>
+
+          <li>Class variables - @@</li>
+          <li>Global variables - $</li>
+          <li>Constants - uppercase letter</li>
+        </ul>
+        </p>
+        <h3>Local Variables</h3>
+        <p>Example:</p>
+
+        <div><code>foobar<br/>
+          _foobar</code></div>
+      </section>
+      <section class="main-section" id="Conditionals_and_Loops">
+        <header>Conditionals and Loops</header>
+        <h3>Conditional Branches</h3>
+        <p>Ruby can control the execution of code using Conditional branches. A conditional Branch takes the result
+          of a test expression and executes a block of code depending whether the test expression is true or false. If
+          the
+          test expression evaluates to the constant <code>false</code> or <code>nil</code>, the test is false;
+          otherwise, it is true. Note that the
+          number <code>zero</code> is considered true, whereas many other programming languages consider it false.</p>
+
+        <p>
+          In many popular programming languages, conditional branches are statements. They can affect which code is
+          executed, but they do not result in values themselves. In Ruby, however, conditional branches are expressions.
+          They evaluate to values, just like other expressions do. An <code>if</code> expression, for example, not only
+          determines
+          whether a subordinate block of code will execute, but also results in a value itself. If no block is executed,
+          the if expression results in nil. For instance, the following <code>if</code>expression evaluates to 3:</p>
+        <div><code>if true
+        3
+        end</code></div>
+
+        <p>Ruby's conditional branches are explained below.</p>
+
+        <h3>if expression</h3>
+        <p>Examples:</p>
+
+        <div><code>a = 5
+        if a == 4
+        a = 7
+        end
+        print a # prints 5 since the if-block isn't executed</code></div>
+
+        <p>You can also put the test expression and code block on the same line if you use <code>then</code>:</p>
+
+        <div>
+          <code>if a == 4 then a = 7 end
+        #or
+        if a == 4: a = 7 end
+        #Note that the ":" syntax for if one line blocks do not work anymore in ruby 1.9. Ternary statements still work</code>
+        </div>
+
+        <p>This is equal to:</p>
+
+        <div><code>a = 5
+        a = 7 if a == 4
+        print a # prints 5 since the if-block isn't executed</code></div>
+
+
+        <h3>unless expression</h3>
+        <p>The unless-expression is the opposite of the if-expression, the code-block it contains will only be executed
+          if
+          the test expression is false.</p>
+
+        <p>Examples:</p>
+
+        <div><code>a = 5
+        unless a == 4
+        a = 7
+        end
+        print a # prints 7 since the unless-block is executed</code></div>
+
+        <p>The unless expression is almost exactly like a negated if expression:</p>
+
+        <div><code>if !expression # is equal to using unless expression</code></div>
+
+        <p>The difference is that the unless does not permit a following elsif. And there is no elsunless.</p>
+
+        <p>Like the if-expression you can also write:</p>
+
+        <div><code>a = 5
+        a = 7 unless a == 4
+        print a # prints 7 since the unless-block is executed</code></div>
+
+        <p>The "one-liners" are handy when the code executed in the block is one line only.</p>
+
+        <h3>if-elsif-else expression</h3>
+
+        <p>The elsif (note that it's <code>elsif</code><code>elseif</code>) and else blocks give you further control of
+          your scripts by
+          providing the option to accommodate additional tests. The <code>elsif</code> and <code>else</code> blocks are
+          considered only if the <code>if</code>
+          test is false. You can have any number of <code>elsif</code> blocks but only one if and one else block.</p>
+
+
+        <p>Syntax:</p>
+        <div><code>if expression
+        ...code block...
+        elsif another expression
+        ...code block...
+        elsif another expression
+        ...code block...
+        else
+        ...code block...
+        end</code></div>
+
+        <h3>short-if expression (aka ternary operator)</h3>
+        <p>
+          The "short-if" statement provides you with a space-saving way of evaluating an expression and returning a
+          value.
+        </p>
+        <p>
+          The format is:</p>
+
+        <div><code>result = (condition) ? (expression-if-true) : (expression-if-false)</code></div>
+
+        <p>It is also known as the ternary operator and it is suggested to only use this syntax for minor tasks, such as
+          string formatting, because of poor code readability that may result.
+        </p>
+        <div><code>irb(main):037:0> true ? 't' : 'f'
+        => "t"
+        irb(main):038:0> false ? 't' : 'f'
+        => "f"</code></div>
+
+        <p>
+          This is very useful when doing string concatenation among other things.</p>
+
+        <p>Example:</p>
+
+        <div><code>a = 5
+        plus_or_minus = '+'
+        print "The number #{a}#{plus_or_minus}1 is: #{plus_or_minus == '+' ? (a+1).to_s : (a-1).to_s}."</code></div>
+
+        <p>Also, this can be written as:</p>
+        <div><code>result = if condition then expression-1 else expression-2 end</code></div>
+
+        <p>Assignments can be made as:</p>
+
+        <div><code>result = (value-1 if expression-1) || (value-2 if expression-2)</code></div>
+
+        <h3>case expression</h3>
+        <p>
+          An alternative to the if-elsif-else expression (above) is the case expression. Case in Ruby supports a number
+          of
+          syntaxes. For example, suppose we want to determine the relationship of a number (given by the variable a) to
+          5.
+          We could say:</p>
+        <div><code>a = 1
+        case
+        when a < 5 then puts "#{a} is less than 5" when a==5 then puts "#{a} equals 5" when a> 5 then puts "#{a} is
+          greater than 5"
+          end</code></div>
+
+        <p>
+          Note that, as with if, the comparison operator is ==. The assignment operator is =. Though Ruby will accept
+          the assignment operator:</p>
+        <div><code>when a = 5 then puts "#{a} equals 5" # WARNING! This code CHANGES the value of a!</code></div>
+        <p>
+          this is not what we want! Here, we want the comparison operator.
+        </p>
+        <p>
+          A more concise syntax for case is to imply the comparison:</p>
+
+        <div><code>case a
+          when 0..4 then puts "#{a} is less than 5"
+          when 5 then puts "#{a} equals 5"
+          when 5..10 then puts "#{a} is greater than 5"
+          else puts "unexpected value #{a} " # Just in case "a" is bigger than 10 or negative.
+          end</code></div>
+
+        <p>
+          Note: because the ranges are explicitly stated, it is a good coding practice to handle unexpected values of a.
+          This concise syntax is perhaps most useful when we know in advance what values to expect. For example:</p>
+
+        <div><code>a = "apple"
+          case a
+          when "vanilla" then "a spice"
+          when "spinach" then "a vegetable"
+          when "apple" then "a fruit"
+          else "an unexpected value"
+          end</code></div>
+
+        <p>If entered into IRB this gives:</p>
+
+        <div><code>  => "a fruit"</code></div>
+
+        <p>Other ways to use case and variations on its syntax may be seen at Linuxtopia Ruby Programming [1]</p>
+
+
+        <h3>Loops</h3>
+        <h4>while</h4>
+
+        <p>The <code>while</code> statement in Ruby is very similar to <code>if</code> and to other languages'
+          <code>while</code> (syntactically):
+        </p>
+        <div><code>while < expression >
+            <...code block...>
+              end</code></div>
+
+        <p>The code block will be executed again and again, as long as the expression evaluates to <code>true</code>.
+        </p>
+
+        Also, like <code>if</code> and <code>unless</code>, the following is possible:
+
+        <div><code><...code...> while < expression ></code></div>
+        <p>Note the following strange case works...</p>
+
+        <div><code>line = readline.chomp while line != "what I'm looking for"</code></div>
+
+
+        <p> So if local variable <code>line</code> has no existence prior to this line, on seeing it for the first time
+          it has
+          the value <code>nil</code> when the loop expression is first evaluated.</p>
+
+        <h4>until</h4>
+        The <code>until</code> statement is similar to the <code>while</code> statement in functionality. Unlike the
+        <code>while</code> statement,
+        the code block for the <code>until</code> loop will execute as long as the expression evaluates to false.
+        <div><code>until < expression >
+              <...code block...>
+                end</code></div>
+
+        <h3>Keywords</h3>
+        <h4>return</h4>
+        <p><code>return value</code> causes the method in which it appears to exit at that point and return the value
+          specified.</p>
+
+        <p>Note that if a method has no return statement then the value of the last statement is implicitly
+          returned.</p>
+      </section>
+
+
+    </div>
+  </div>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+
+</html>

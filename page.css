@@ -1,0 +1,89 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+nav header {
+  text-align: center;
+  margin: 10px;
+}
+
+#main-doc header {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+nav {
+  position: fixed;
+  background-color: rgb(113, 114, 114);
+  width: 20%;
+  height: 100%;
+  border-right: 2px solid black;
+}
+
+nav ul {
+  padding: 0;
+  border-top: 1px solid black;
+}
+
+nav li {
+  padding: 10px 10px;
+  list-style-type: none;
+  border-bottom: 1px solid black;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+#main-doc {
+  background-color: rgb(243, 243, 250);
+  padding: 15px;
+}
+
+/* code tag inside paragraph uses the attributes below */
+code {
+  background-color: burlywood;
+}
+#main-doc {
+  grid-column: 2;
+}
+#main-doc div {
+  padding: 10px;
+  height: fit-content;
+  width: 100%;
+  display: block;
+  background-color: #ddd4c8;
+}
+
+section {
+  scroll-behavior: smooth;
+}
+
+@media only screen and (max-width: 500px) {
+  #container {
+    display: block;
+  }
+  nav {
+    position: initial;
+    width: 100%;
+    height: initial;
+  }
+  nav h4 {
+    position: relative;
+    display: inline-block;
+    width: inherit;
+  }
+  nav ul {
+    margin: 0;
+  }
+}
